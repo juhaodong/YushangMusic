@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.elvishew.xlog.XLog;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.HashMap;
 
@@ -64,6 +67,8 @@ public class HomeFragment extends Fragment {
         IKRequest i = new IKRequest().url("https://www.googleapis.com/youtube/v3/search").data(params).method(RequestType.GET)
                 .callback((result -> {
 
+                    JsonObject jsonObject=new JsonParser().parse(result).getAsJsonObject();
+                    JsonArray items=jsonObject.getAsJsonArray("items");
 
 
                 })).bulid();

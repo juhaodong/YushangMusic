@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="羽商音乐"
+    android:hint="查找你喜欢的音乐" >
+</searchable>

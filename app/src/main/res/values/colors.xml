@@ -3,6 +3,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="theme_dark">#367aeb</color>
+    <color name="theme_dark">#367AEB</color>
     <color name="charge_color">#FFFFFF</color>
 </resources>

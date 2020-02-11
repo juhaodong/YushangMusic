@@ -4,6 +4,8 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.elvishew.xlog.XLog;
+
 import us.haodongandyushang.yushangmusic.BaseActivity;
 import us.haodongandyushang.yushangmusic.R;
 
@@ -17,7 +19,7 @@ public class SearchActivity extends BaseActivity {
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-
+            XLog.e(query);
         }
     }
 }

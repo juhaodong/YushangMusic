@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.elvishew.xlog.XLog;
 import com.google.gson.JsonArray;
@@ -20,6 +23,7 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import us.haodongandyushang.yushangmusic.Adapters.SearchResultAdapter;
 import us.haodongandyushang.yushangmusic.R;
 import us.haodongandyushang.yushangmusic.utils.IKRequest;
 import us.haodongandyushang.yushangmusic.utils.NetworkUtils;
@@ -32,11 +36,22 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.searchQuery)
     EditText searchQuery;
 
+
+
     @BindView(R.id.search_button)
     Button search;
 
+    @BindView(R.id.search_result)
+    RecyclerView recyclerView;
+
+    private SearchResultAdapter resultAdapter=new SearchResultAdapter();
 
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        queryForResults(getArguments() != null ? getArguments().getString("query") : null);
+        super.onViewCreated(view, savedInstanceState);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +61,8 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, root);
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(resultAdapter);
 
         search.setOnClickListener(view -> {
             queryForResults(searchQuery.getText().toString());
@@ -68,7 +85,10 @@ public class HomeFragment extends Fragment {
                 .callback((result -> {
 
                     JsonObject jsonObject=new JsonParser().parse(result).getAsJsonObject();
-                    JsonArray items=jsonObject.getAsJsonArray("items");
+                    resultAdapter.results= jsonObject.getAsJsonArray("items");
+                    getActivity().runOnUiThread(()->{
+                        resultAdapter.notifyDataSetChanged();
+                    });
 
 
                 })).bulid();

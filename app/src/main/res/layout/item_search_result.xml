@@ -2,84 +2,99 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="240dp"
     android:background="#00FFFFFF"
-    android:layout_marginBottom="8dp"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="4dp"
-        >
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/thumbnail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:placeholderImage="@drawable/banner"
+         />
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/thumbnail"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                fresco:placeholderImage="@drawable/loading"
-                fresco:roundedCornerRadius="5dp"
-                />
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/mr_cast_meta_black_scrim"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/thumbnail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/item_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-thin"
-                    android:maxLines="2"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/item_desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-thin"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="fill_horizontal"
-                    android:orientation="horizontal">
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/button"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/item_title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#311B92"
-                        android:text="播放"
-                        android:textColor="@color/charge_color" />
+                        android:ellipsize="end"
+                        android:fontFamily="@font/asul"
+                        android:maxLines="1"
+                        android:text="biaotibiaoti"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/item_desc"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="#311B92"
-                        android:text="收藏"
-                        android:textColor="@color/charge_color" />
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-thin"
+                        android:text="miaoshumiaoshu"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
 
+                <Button
+                    android:id="@+id/play_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:backgroundTint="#311B92"
+                    android:elevation="2dp"
+                    android:text="播放"
+                    android:textColor="@color/charge_color" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:backgroundTint="#311B92"
+                    android:elevation="2dp"
+                    android:text="收藏"
+                    android:textColor="@color/charge_color" />
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package us.haodongandyushang.yushangmusic.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import us.haodongandyushang.yushangmusic.Models.SearchResult;
 import us.haodongandyushang.yushangmusic.R;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder> {
+    public SearchResultViewHolder.ItemClickCallback activity;
 
     public static class SearchResultViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_title)
@@ -27,9 +29,20 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         @BindView(R.id.thumbnail)
         public SimpleDraweeView thumbnail;
 
+        @BindView(R.id.item_desc)
+        TextView description;
+
+        @BindView(R.id.play_button)
+        Button button;
+
         public SearchResultViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
+        }
+
+
+        public interface ItemClickCallback{
+            public void SearchResultClick(SearchResult searchResult);
         }
     }
 
@@ -57,11 +70,14 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             SearchResult searchResult = new SearchResult(item);
             holder.title.setText(searchResult.getTitle());
             holder.thumbnail.setImageURI(searchResult.getThumbnail().getUrl());
+            holder.description.setText(searchResult.getChanneTitle());
+            holder.button.setOnClickListener(view -> activity.SearchResultClick(searchResult));
 
         } catch (JsonIOException e) {
             e.printStackTrace();
         }
     }
+
 
 
     @Override

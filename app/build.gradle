@@ -41,7 +41,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    compile 'com.jakewharton:butterknife:10.2.1'
+    implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     implementation 'com.facebook.fresco:fresco:2.1.0'
@@ -59,11 +59,14 @@ dependencies {
 
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
-    compile 'com.vincentbrison.openlibraries.android:foldablelayout:0.0.1@aar'
+
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.mediarouter:mediarouter:1.1.0'
-
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.23'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 }
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }

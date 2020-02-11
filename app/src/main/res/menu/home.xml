@@ -6,14 +6,14 @@
         android:id="@+id/app_bar_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
+        android:iconTint="@color/white"
         app:showAsAction="always"
-        android:iconTint="@color/charge_color"
         app:actionViewClass="android.widget.SearchView" />
     <item
         android:id="@+id/media_route_menu_item"
         app:showAsAction="ifRoom"
         android:title="Cast"
         app:actionProviderClass="androidx.mediarouter.app.MediaRouteActionProvider"
-        android:iconTint="@color/charge_color"
+        android:iconTint="@color/white"
         tools:icon="@drawable/mr_button_light" />
 </menu>

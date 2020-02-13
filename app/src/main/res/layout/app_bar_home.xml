@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="196dp"
+        android:layout_height="240dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -29,7 +29,7 @@
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.5"
-                app:srcCompat="@drawable/banner"
+                app:srcCompat="@drawable/cover"
                 />
 
             <androidx.appcompat.widget.Toolbar
@@ -88,6 +88,7 @@
                 android:layout_height="72dp"
                 app:cardBackgroundColor="@color/charge_color"
                 app:cardCornerRadius="0dp"
+                android:id="@+id/peek_card"
                 app:cardElevation="10dp">
 
                 <LinearLayout

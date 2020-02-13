@@ -21,14 +21,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             fresco:actualImageScaleType="centerCrop"
-            fresco:placeholderImage="@drawable/banner"
-         />
+            fresco:placeholderImage="@drawable/banner" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/mr_cast_meta_black_scrim"
-            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/theme_dark"
+            app:cardCornerRadius="0dp"
             app:cardElevation="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/thumbnail"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,25 +73,16 @@
 
                 </LinearLayout>
 
-                <Button
+                <ImageButton
                     android:id="@+id/play_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:backgroundTint="#311B92"
-                    android:elevation="2dp"
-                    android:text="播放"
-                    android:textColor="@color/charge_color" />
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:backgroundTint="#311B92"
+                    android:background="@drawable/md_transparent"
                     android:elevation="2dp"
-                    android:text="收藏"
-                    android:textColor="@color/charge_color" />
+                    android:src="@drawable/quantum_ic_play_arrow_white_24" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

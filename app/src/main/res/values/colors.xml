@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#1A237E</color>
-    <color name="colorAccent">#536DFE</color>
+    <color name="colorPrimary">#4caf50</color>
+    <color name="colorPrimaryDark">#2e7d32</color>
+    <color name="colorAccent">#69f0ae</color>
     <color name="black">#7B000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="theme_dark">#212121</color>
+    <color name="theme_dark">#263238</color>
     <color name="charge_color">#FFFFFF</color>
+    <color name="surface_color">#FFC107</color>
 </resources>

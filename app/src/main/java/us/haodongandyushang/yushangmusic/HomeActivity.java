@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -23,7 +24,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.elvishew.xlog.XLog;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -84,7 +88,8 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
 
     BottomSheetBehavior bottomSheetBehavior;
 
-
+    @BindView(R.id.peek_card)
+    CardView peekCard;
     boolean isPlaying = true;
     float total;
 
@@ -100,6 +105,10 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) collapsingToolbar.getLayoutParams();
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
 
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -140,16 +149,41 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
         bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP|
+                                AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL|
+                                AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS|
+                                AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED
 
+                        ); // list other flags here by |
+                        collapsingToolbar.setLayoutParams(params);
+
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        params.setScrollFlags(
+                                AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
+                                        | AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP
+                        | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED); // list other flags here by |
+                        collapsingToolbar.setLayoutParams(params);
+
+
+                }
             }
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
+                if (slideOffset > 0.5) {
+                    peekCard.setVisibility(View.GONE);
+                } else {
+                    peekCard.setVisibility(View.VISIBLE);
+                    peekCard.setAlpha((0.5f - slideOffset) * 2);
+                    XLog.e(Float.toString(peekCard.getAlpha()));
+                }
             }
         });
 
-
+        playingInfo.setVisibility(View.GONE);
         imageButtons = new ArrayList<>();
         imageButtons.add(playButton);
         imageButtons.add(replayButton);
@@ -168,11 +202,11 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+
         if (searchManager != null) {
             searchView.setSearchableInfo(
                     searchManager.getSearchableInfo(getComponentName()));
         }
-        MenuItem search=menu.findItem(R.id.app_bar_search);
 
         searchView.setIconifiedByDefault(true);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -270,15 +304,13 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
             public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState state) {
                 hideAllButton();
                 switch (state) {
-                    case UNSTARTED:
-                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-                        break;
                     case PAUSED:
                         playButton.setVisibility(View.VISIBLE);
                         break;
                     case PLAYING:
-                        bottomSheetBehavior.setHideable(false);
+                        playingInfo.setVisibility(View.VISIBLE);
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        bottomSheetBehavior.setHideable(false);
                         pauseButton.setVisibility(View.VISIBLE);
                         break;
                     case ENDED:
@@ -292,9 +324,15 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
         musicDescription.setText(searchResult.getDescription());
         playingTitle.setText(searchResult.getTitle());
         playingImg.setImageURI(searchResult.getThumbnail().getUrl());
+        channelName.setText(searchResult.getChanneTitle());
+        publishAt.setText(String.format("发布于:%s", searchResult.getPublishedAt().split("T")[0]));
 
 
     }
+    @BindView(R.id.channel_name)
+    TextView channelName;
+    @BindView(R.id.publish_at)
+    TextView publishAt;
 
 
     void hideAllButton() {

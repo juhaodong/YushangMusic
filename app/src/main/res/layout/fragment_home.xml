@@ -24,12 +24,12 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/random_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="visible"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
-                android:visibility="gone"
                 app:contentPadding="16dp">
 
                 <LinearLayout
@@ -37,24 +37,16 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/searchQuery"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/title_text"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="请输入您感兴趣"
-                        android:inputType="textPersonName" />
-
-                    <Button
-                        android:id="@+id/search_button"
-                        android:layout_width="wrap_content"
-
-                        android:layout_height="match_parent"
-                        android:background="@drawable/md_btn_shape"
-                        android:backgroundTint="@color/design_default_color_primary_dark"
-                        android:text="搜索"
-                        android:textColor="@color/charge_color" />
-
+                        android:fontFamily="sans-serif-black"
+                        android:text="随便听听"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/design_default_color_on_secondary"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

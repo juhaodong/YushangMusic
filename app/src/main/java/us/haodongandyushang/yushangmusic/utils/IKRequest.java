@@ -95,7 +95,7 @@ public class IKRequest {
         if (response.code() == 200) {
             String result = response.body().string();
             if(withDebug){
-                XLog.e("网络请求:" + System.lineSeparator() + "URL:" + GlobalParams.BASE_URL + this.URL + System.lineSeparator() + "data:" + IKRequest.getData(this.params) + System.lineSeparator() + "请求结果:" + System.lineSeparator() + result);
+                XLog.e("网络请求:" + System.lineSeparator() + "URL:" + this.URL + System.lineSeparator() + "data:" + IKRequest.getData(this.params) + System.lineSeparator() + "请求结果:" + System.lineSeparator() + result);
 
             }
 
@@ -103,7 +103,7 @@ public class IKRequest {
         } else {
             // SweetAlert.showErrorWithInfo("网络请求错误:" + response.code());
             if(withDebug){
-                XLog.e("网络请求错误:" + System.lineSeparator() + "URL:" + GlobalParams.BASE_URL + this.URL + System.lineSeparator() + "data:" + IKRequest.getData(this.params) + System.lineSeparator() + "请求结果:" + System.lineSeparator() + response.code());
+                XLog.e("网络请求错误:" + System.lineSeparator() + "URL:" +  this.URL + System.lineSeparator() + "data:" + IKRequest.getData(this.params) + System.lineSeparator() + "请求结果:" + System.lineSeparator() + response.code());
 
             }
 

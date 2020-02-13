@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             fresco:actualImageScaleType="centerCrop"
-            fresco:placeholderImage="@drawable/banner" />
+            fresco:placeholderImage="@mipmap/banner" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"

@@ -1,4 +1,4 @@
-package us.haodongandyushang.yushangmusic.Activitys;
+package us.haodongandyushang.yushangmusic;
 
 import android.app.SearchManager;
 import android.content.Context;

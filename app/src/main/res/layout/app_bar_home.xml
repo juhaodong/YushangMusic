@@ -5,7 +5,7 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.HomeActivity">
+    tools:context=".HomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -29,7 +29,7 @@
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.5"
-                app:srcCompat="@drawable/cover"
+                app:srcCompat="@mipmap/cover"
                 />
 
             <androidx.appcompat.widget.Toolbar

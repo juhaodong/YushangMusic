@@ -15,7 +15,7 @@
 
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activitys.HomeActivity"
+            android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data android:name="android.app.searchable"

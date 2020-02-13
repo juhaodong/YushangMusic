@@ -30,6 +30,8 @@ import us.haodongandyushang.yushangmusic.utils.IKRequest;
 import us.haodongandyushang.yushangmusic.utils.NetworkUtils;
 import us.haodongandyushang.yushangmusic.utils.RequestType;
 
+import static us.haodongandyushang.yushangmusic.LocalKeys.GoogleApiKey;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
@@ -102,7 +104,7 @@ public class HomeFragment extends Fragment {
         params.put("order", "relevance");
         params.put("type", "video");
         params.put("maxResults", "15");
-        params.put("key", "AIzaSyBTnMr6f4E3nYmKkdsULTBFdhwJdRlGt6g");
+        params.put("key", GoogleApiKey);
         IKRequest i = new IKRequest().url("https://www.googleapis.com/youtube/v3/search").data(params).method(RequestType.GET)
                 .callback((result -> {
 

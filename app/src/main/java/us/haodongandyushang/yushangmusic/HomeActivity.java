@@ -2,6 +2,8 @@ package us.haodongandyushang.yushangmusic;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.transition.TransitionManager;
 import android.view.Menu;
@@ -126,7 +128,7 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery
         )
                 .setDrawerLayout(drawer)
                 .build();
@@ -191,6 +193,12 @@ public class HomeActivity extends AppCompatActivity implements SearchResultAdapt
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
+    @OnClick(R.id.copy_right_title2)
+    void jumpToGithub(View v){
+        Uri uri = Uri.parse("https://github.com/juhaodong/YushangMusic");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

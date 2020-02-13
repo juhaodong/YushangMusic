@@ -24,7 +24,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import us.haodongandyushang.yushangmusic.Adapters.SearchResultAdapter;
-import us.haodongandyushang.yushangmusic.HomeActivity;
+import us.haodongandyushang.yushangmusic.Activitys.HomeActivity;
 import us.haodongandyushang.yushangmusic.R;
 import us.haodongandyushang.yushangmusic.utils.IKRequest;
 import us.haodongandyushang.yushangmusic.utils.NetworkUtils;

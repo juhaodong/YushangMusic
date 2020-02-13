@@ -1,4 +1,4 @@
-package us.haodongandyushang.yushangmusic;
+package us.haodongandyushang.yushangmusic.Activitys;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -48,6 +48,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import us.haodongandyushang.yushangmusic.Adapters.SearchResultAdapter;
 import us.haodongandyushang.yushangmusic.Models.SearchResult;
+import us.haodongandyushang.yushangmusic.R;
 
 public class HomeActivity extends AppCompatActivity implements SearchResultAdapter.SearchResultViewHolder.ItemClickCallback {
 

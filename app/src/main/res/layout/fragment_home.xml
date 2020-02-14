@@ -27,7 +27,8 @@
                 android:id="@+id/random_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
                 app:contentPadding="16dp">
@@ -45,7 +46,7 @@
                         android:fontFamily="sans-serif-black"
                         android:text="随便听听"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/design_default_color_on_secondary"
+                        android:textColor="@color/charge_color"
                         android:textSize="18sp" />
                 </LinearLayout>
 
